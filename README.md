@@ -76,10 +76,10 @@ Git History                 █████████████████�
 
 | Model | Size | Architecture | VRAM | Status |
 |-------|------|--------------|------|--------|
-| **Zen Coder 4B** | 4B | Qwen3 | 8 GB | 🟢 Training |
-| **Zen Coder 24B** | 24B | Devstral Small 2 | 24 GB | 🟡 Planned |
+| **Zen Coder 4B** | 4B | Qwen3 | 8 GB | ✅ Trained |
+| **Zen Coder 24B** | 24B | Devstral Small 2 | 24 GB | ✅ Trained |
 | **Zen Coder 123B** | 123B | Devstral 2 | 128 GB | 🟡 Planned |
-| **Zen Coder MAX** | 358B | GLM-4.7 (MoE) | 180 GB | 🟡 Planned |
+| **Zen Coder Max** | 358B | GLM-4.7 (MoE) | 180 GB | 🟡 Planned |
 
 ## Access & Licensing
 
