@@ -161,6 +161,7 @@ Unlike synthetic datasets, this contains **actual Claude Code sessions** showing
 - [Zen Trainer](https://github.com/zenlm/zen-trainer) - Training framework for Zen Coder models
 - [Hanzo MCP](https://github.com/hanzoai/mcp) - Model Context Protocol (260+ tools)
 - [Hanzo AI](https://hanzo.ai) - AI infrastructure platform
+- [Lux Network](https://lux.network) - AI compute settlement layer
 - [Zoo Labs](https://zoo.ngo) - Decentralized AI research network
 
 ---
