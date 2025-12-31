@@ -80,6 +80,7 @@ Git History                 █████████████████�
 | **Zen Coder 24B** | 24B | Devstral Small 2 | 24 GB | ✅ Trained |
 | **Zen Coder 123B** | 123B | Devstral 2 | 128 GB | 🟢 Training |
 | **Zen Coder Max** | 358B | GLM-4.7 (MoE) | 180 GB | 🟡 Planned |
+| **Zen Coder Ultra** | 1T | Kimi K2 (MoE) | 256 GB | 🟡 Planned |
 
 ## Access & Licensing
 
