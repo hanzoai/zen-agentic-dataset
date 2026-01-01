@@ -1,7 +1,7 @@
 # Zen Agentic Dataset
 
 <p align="center">
-  <strong>8.47 Billion Tokens</strong> of real-world agentic AI programming data
+  <strong>10.4 Billion Tokens</strong> of real-world agentic AI programming data
 </p>
 
 <p align="center">
@@ -20,21 +20,26 @@ A comprehensive training dataset combining Claude Code interactions with full gi
 
 | Metric | Value |
 |--------|-------|
-| **Total Tokens** | 8.47 billion |
-| **Training Samples** | 3.35 million |
-| **Validation Samples** | 100,000 |
-| **Total Size** | ~27 GB |
-| **Repositories** | 1,452 |
+| **Total Tokens** | 10.4 billion |
+| **Training Samples** | 3.45 million |
+| **Validation Samples** | 156,000 |
+| **Total Size** | ~28 GB |
+| **Repositories** | 1,500+ |
 | **Time Span** | 15 years (2010-2025) |
+| **Last Updated** | December 2025 |
 
 ## Data Composition
 
 ```
-Claude Code Debug Sessions  ████████████░░░░░░░░░░░░░  29% (2.42B tokens)
-Claude Conversations        █████░░░░░░░░░░░░░░░░░░░░  13% (1.14B tokens)
-Claude Interactions         ████░░░░░░░░░░░░░░░░░░░░░  10% (0.86B tokens)
-Git History                 ████████████████████░░░░░  48% (4.03B tokens)
+Claude Code Sessions        ████████████████░░░░░░░░░  42% (4.4B tokens)
+Git Commit History          ████████████████████░░░░░  48% (5.0B tokens)
+Claude Interactions         ████░░░░░░░░░░░░░░░░░░░░░  10% (1.0B tokens)
 ```
+
+### December 2025 Update
+- **+45,308** Claude Code sessions extracted
+- **+6,646** git commits from 380 active repositories
+- **+2B tokens** added to training corpus
 
 ## Domain Coverage
 
@@ -149,10 +154,10 @@ Unlike synthetic datasets, this contains **actual Claude Code sessions** showing
 ```bibtex
 @dataset{zen_agentic_dataset,
   author = {Kelling, Zach},
-  title = {Zen Agentic Dataset: 8.47B Tokens of Agentic AI Programming},
+  title = {Zen Agentic Dataset: 10.4B Tokens of Agentic AI Programming},
   year = {2025},
   publisher = {Zoo Labs Foundation},
-  note = {3.35M samples, 1,452 repositories, 15 years of development},
+  note = {3.45M samples, 1,500+ repositories, 15 years of development},
   url = {https://github.com/hanzoai/zen-agentic-dataset}
 }
 ```
