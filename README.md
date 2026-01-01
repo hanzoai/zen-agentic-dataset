@@ -1,7 +1,7 @@
 # Zen Agentic Dataset
 
 <p align="center">
-  <strong>10.4 Billion Tokens</strong> of real-world agentic AI programming data
+  <strong>10.3 Billion Tokens</strong> of real-world agentic AI programming data
 </p>
 
 <p align="center">
@@ -20,7 +20,7 @@ A comprehensive training dataset combining Claude Code interactions with full gi
 
 | Metric | Value |
 |--------|-------|
-| **Total Tokens** | 10.4 billion |
+| **Total Tokens** | 10.3 billion |
 | **Training Samples** | 3.45 million |
 | **Validation Samples** | 156,000 |
 | **Total Size** | ~28 GB |
@@ -154,7 +154,7 @@ Unlike synthetic datasets, this contains **actual Claude Code sessions** showing
 ```bibtex
 @dataset{zen_agentic_dataset,
   author = {Kelling, Zach},
-  title = {Zen Agentic Dataset: 10.4B Tokens of Agentic AI Programming},
+  title = {Zen Agentic Dataset: 10.3B Tokens of Agentic AI Programming},
   year = {2025},
   publisher = {Zoo Labs Foundation},
   note = {3.45M samples, 1,500+ repositories, 15 years of development},
