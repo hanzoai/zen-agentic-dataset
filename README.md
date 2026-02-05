@@ -22,11 +22,12 @@ A comprehensive training dataset combining Claude Code interactions with full gi
 |--------|-------|
 | **Total Tokens** | 10.5 billion |
 | **Training Samples** | 3.5 million |
+| **Claude Conversations** | 214,163+ |
 | **Validation Samples** | 156,000 |
 | **Total Size** | ~28 GB |
 | **Repositories** | 1,500+ |
-| **Time Span** | 15 years (2010-2025) |
-| **Last Updated** | January 2026 |
+| **Time Span** | 15 years (2010-2026) |
+| **Last Updated** | February 2026 |
 
 ## Data Composition
 
@@ -35,6 +36,12 @@ Claude Code Sessions        ████████████████░�
 Git Commit History          ████████████████████░░░░░  48% (5.0B tokens)
 Claude Interactions         ████░░░░░░░░░░░░░░░░░░░░░  10% (1.0B tokens)
 ```
+
+### February 2026 Update
+- **+425** new Claude Code conversations extracted
+- **+214K** total curated conversations now available
+- **+102 MB** claude-interactions.jsonl dataset file
+- Full extraction pipeline updated for continuous collection
 
 ### January 2026 Update
 - **+45,308** Claude Code sessions extracted
@@ -82,10 +89,9 @@ Claude Interactions         ████░░░░░░░░░░░░░�
 | Model | Size | Architecture | VRAM | Status |
 |-------|------|--------------|------|--------|
 | **Zen Coder 4B** | 4B | Qwen3 | 8 GB | ✅ Trained |
-| **Zen Coder 24B** | 24B | Devstral Small 2 | 24 GB | ✅ Trained |
+| **Zen Coder Flash** | 31B MoE | GLM-4.7-Flash | 24 GB | ✅ Trained |
 | **Zen Coder 123B** | 123B | Devstral 2 | 128 GB | 🟢 Training |
-| **Zen Coder Max** | 358B | GLM-4.7 (MoE) | 180 GB | 🟡 Planned |
-| **Zen Coder Ultra** | 1T | Kimi K2 (MoE) | 256 GB | 🟡 Planned |
+| **Zen Max** | 671B MoE | Kimi K2 | 180 GB | 🟡 Planned |
 
 ## Access & Licensing
 
@@ -155,9 +161,9 @@ Unlike synthetic datasets, this contains **actual Claude Code sessions** showing
 @dataset{zen_agentic_dataset,
   author = {Kelling, Zach},
   title = {Zen Agentic Dataset: 10.5B Tokens of Agentic AI Programming},
-  year = {2025},
+  year = {2026},
   publisher = {Zoo Labs Foundation},
-  note = {3.45M samples, 1,500+ repositories, 15 years of development},
+  note = {3.5M samples, 1,500+ repositories, 15 years of development},
   url = {https://github.com/hanzoai/zen-agentic-dataset}
 }
 ```
