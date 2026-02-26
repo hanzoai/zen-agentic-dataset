@@ -57,7 +57,7 @@ A comprehensive training dataset combining Claude Code interactions with full gi
 
 ### Agentic AI & LLM Infrastructure
 - Model Context Protocol (MCP) - 260+ tool implementations
-- Multi-agent orchestration - Claude, GPT-4, Gemini, Qwen
+- Multi-agent orchestration - Claude, GPT-4, Gemini, Zen
 - Agent frameworks - Planning, memory, tool use, reflection
 - LLM Gateway - Unified proxy for 100+ providers
 
@@ -91,9 +91,9 @@ A comprehensive training dataset combining Claude Code interactions with full gi
 
 | Model | Size | Architecture | Status |
 |-------|------|--------------|--------|
-| **Zen Coder 4B** | 4B | Qwen3 | ✅ Released |
+| **Zen Coder 4B** | 4B | Zen Eco | ✅ Released |
 | **Zen Coder Flash** | 31B MoE | GLM-4.7-Flash | ✅ Released |
-| **Zen Max** | 671B MoE | Kimi K2 | 🟢 Training |
+| **Zen Max** | 671B MoE | Zen4 Ultra | 🟢 Training |
 
 ## Access & Licensing
 
