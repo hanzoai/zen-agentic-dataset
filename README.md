@@ -92,7 +92,7 @@ A comprehensive training dataset combining Claude Code interactions with full gi
 | Model | Size | Architecture | Status |
 |-------|------|--------------|--------|
 | **Zen Coder 4B** | 4B | Zen | ✅ Released |
-| **Zen Coder Flash** | 31B MoE | GLM-4.7-Flash | ✅ Released |
+| **Zen Coder Flash** | 31B MoE | Zen Coder Flash | ✅ Released |
 | **Zen Max** | 671B MoE | Zen Max | 🟢 Training |
 
 ## Access & Licensing
