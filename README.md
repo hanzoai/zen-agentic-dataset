@@ -167,8 +167,10 @@ Unlike synthetic datasets, this contains **actual Hanzo Zen / Claude Code sessio
 | [Hanzo AI](https://hanzo.ai) | Primary maintainer |
 | [Zen LM](https://zenlm.org) | Model training |
 | [Zoo Labs](https://zoo.ngo) | Research grants |
+| [Zoo Gym](https://github.com/zooai/gym) | Training framework |
 
 ---
 
 **Maintainer:** [z@hanzo.ai](mailto:z@hanzo.ai)  
+**Training framework:** [Zoo Gym](https://github.com/zooai/gym)  
 **License:** Commercial — Contact for terms
