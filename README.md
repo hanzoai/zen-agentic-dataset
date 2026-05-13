@@ -12,7 +12,7 @@ tags:
 - claude
 - programming
 size_categories:
-- 1B<n<10B
+- 10B<n<100B
 task_categories:
 - text-generation
 pretty_name: Zen Agentic Dataset
@@ -20,7 +20,7 @@ pretty_name: Zen Agentic Dataset
 
 # Zen Agentic Dataset
 
-**10.5 Billion Tokens** of real-world agentic AI programming, blockchain development, and cutting-edge infrastructure code.
+**~12 Billion Tokens** of real-world agentic AI programming, blockchain development, and cutting-edge infrastructure code.
 
 ## Dataset Overview
 
@@ -28,54 +28,63 @@ A comprehensive training dataset combining Claude Code interactions with full gi
 
 | Metric | Value |
 |--------|-------|
-| **Total Tokens** | 10.5 billion |
-| **Training Samples** | 3.5 million |
-| **Validation Samples** | 156,000 |
-| **Total Size** | ~120 GB |
+| **Total Tokens (est. BPE)** | ~12 billion |
+| **Unique Entries** | 5,212,393 |
+| **Source JSONL Files Scanned** | 408 |
+| **Dedup Eliminated** | 4,988,597 (48.9%) |
+| **Raw Source Bytes** | 81.5 GB |
+| **Unique After Dedup (uncompressed)** | ~41.7 GB |
+| **Compressed Shards (zstd, on HF)** | ~10 GB |
 | **Repositories** | 1,500+ |
 | **Time Span** | 15 years (2010-2026) |
-| **Last Updated** | February 2026 |
+| **Last Updated** | May 2026 |
 
 ## Data Composition
 
-| Component | Tokens | Percentage |
-|-----------|--------|------------|
-| Claude Code Debug Sessions | 2.42B | 23% |
-| Claude Code Latest | 4.0B | 38% |
-| Claude Conversations | 1.14B | 11% |
-| Claude Interactions | 0.86B | 8% |
-| Git History | 2.1B | 20% |
+| Component | Unique Entries | Notes |
+|-----------|---------------:|-------|
+| Claude Code sessions (`~/.claude/projects/`) | 2,573,471 | The bulk — primary working corpus |
+| `data/claude-latest/` (historical chunks Dec'25–Jan'26) | 1,489,829 | Larger consolidated extracts from prior runs |
+| `train_chunks/` (pre-chunked Jan'26 set) | 380,563 | Mostly redundant with claude-latest, dedup removes ~77% |
+| `data/zeekay/` (personal-corpus slice) | 373,064 | |
+| `data/hanzo-dev/` (Hanzo dev sessions) | 163,589 | |
+| `claude-interactions.jsonl` (Feb'26 snapshot) | 190,559 | |
+| Git history (December 2025 + January 2026) | ~11,500 | |
+| Other small extracts | ~30,000 | Includes agent-mode + cli-cache + history.jsonl |
 
-## February 2026 Update
+## May 2026 Update
 
-- **+425** new Claude Code conversations extracted
-- **+214K** total curated conversations
-- Full extraction pipeline for continuous collection
-- Dataset now exceeds **120 GB** raw data
+- **+2.57M** new Claude Code entries from `~/.claude/projects/` since last extract (Feb 2026)
+- Global `(sessionId, uuid)` dedup across 408 source files — **48.9% reduction**
+- Date-bucketed shards: `2025-q4`, `2026-q1`, `2026-q2` (plus catch-all `unknown`)
+- Zstd compression: ~5× ratio (~10 GB compressed shards vs ~41 GB unique uncompressed)
+- Brand-aware rebranding: Anthropic → Hanzo, Claude → Zen (corpus reads as native Hanzo ecosystem)
+- PII scrubbing: API keys (Anthropic/OpenAI/GitHub/HF/AWS/Google/Slack), JWTs, PEM private keys → placeholders
+- Non-ecosystem brand redaction: keeps `hanzo`, `lux`, `zen`, `zoo`, `adnexus` intact; redacts non-allowed brands
 
 ## Domain Coverage
 
 ### Agentic AI & LLM Infrastructure
-- Model Context Protocol (MCP) - 260+ tool implementations
-- Multi-agent orchestration - Claude, GPT-4, Gemini, Zen
-- Agent frameworks - Planning, memory, tool use, reflection
-- LLM Gateway - Unified proxy for 100+ providers
+- Model Context Protocol (MCP) — 260+ tool implementations
+- Multi-agent orchestration — Hanzo Zen, GPT-4, Gemini, Qwen
+- Agent frameworks — Planning, memory, tool use, reflection
+- LLM Gateway — Unified proxy for 100+ providers
 
 ### Web3 & Blockchain
-- Smart contracts - Solidity, Vyper (ERC20, ERC721, DeFi)
-- Consensus engines - Snow family, BFT, DAG protocols
-- Cross-chain bridges - Multi-VM architecture
-- DeFi protocols - AMMs, lending, staking, governance
+- Smart contracts — Solidity, Vyper (ERC20, ERC721, DeFi)
+- Consensus engines — Snow family, BFT, DAG protocols, Quasar PQ
+- Cross-chain bridges — Multi-VM architecture
+- DeFi protocols — AMMs, lending, staking, governance
 
 ### Cryptography & Security
-- Post-quantum cryptography - Kyber, Dilithium, SPHINCS+
-- Threshold cryptography - MPC, secret sharing, DKG
-- Zero-knowledge proofs - zkSNARKs, zkSTARKs
+- Post-quantum cryptography — ML-DSA, ML-KEM, SLH-DSA (NIST PQC)
+- Threshold cryptography — MPC, secret sharing, DKG, Corona
+- Zero-knowledge proofs — zkSNARKs, zkSTARKs
 
 ### Modern Development
-- Full-stack TypeScript - Next.js 14+, React 18+, Node.js
-- Systems programming - Rust, Go, Python, C/C++
-- DevOps - Docker, Kubernetes, CI/CD pipelines
+- Full-stack TypeScript — Next.js 14+, React 18+, Node.js
+- Systems programming — Rust, Go, Python, C/C++
+- DevOps — Docker, Kubernetes, CI/CD pipelines
 
 ## Languages
 
@@ -87,13 +96,28 @@ A comprehensive training dataset combining Claude Code interactions with full gi
 | Rust | Dockerfile | GraphQL |
 | Go | Makefile | Move |
 
+## Sharding
+
+Data is split by quarter for manageable per-shard download:
+
+| Shard | Date range | Status |
+|---|---|---|
+| `claude-sessions-2025-q4.jsonl.zst` | Oct–Dec 2025 | available |
+| `claude-sessions-2026-q1.jsonl.zst` | Jan–Mar 2026 | available |
+| `claude-sessions-2026-q2.jsonl.zst` | Apr–Jun 2026 | available |
+| `claude-sessions-unknown.jsonl.zst` | no parseable timestamp (kept) | available |
+
+Each entry appears in **exactly one shard** via global `(sessionId, uuid)` dedup — zero cross-shard overlap by construction.
+
+Older raw extracts remain in `data/claude-latest/`, `train_chunks/`, and root-level `claude-interactions*.jsonl` files for reference.
+
 ## Models Trained on This Dataset
 
 | Model | Size | Architecture | Status |
 |-------|------|--------------|--------|
-| **Zen Coder 4B** | 4B | Zen MoDE | ✅ Released |
-| **Zen Coder Flash** | 31B MoE | Zen MoDE | ✅ Released |
-| **Zen Max** | 671B MoE | Zen MoDE | 🟢 Training |
+| **Zen Coder 4B** | 4B | Zen MoDE | Released |
+| **Zen Coder Flash** | 31B MoE | Zen MoDE | Released |
+| **Zen Max** | 671B MoE | Zen MoDE | Training |
 
 ## Access & Licensing
 
@@ -111,23 +135,25 @@ Please include:
 ## Unique Characteristics
 
 ### Real Agentic Programming
-Unlike synthetic datasets, this contains **actual Claude Code sessions** showing:
+Unlike synthetic datasets, this contains **actual Hanzo Zen / Claude Code sessions** showing:
 - Real debugging workflows with trial and error
 - Complex multi-file refactoring decisions
 - Tool use patterns (file ops, search, git, tests)
 - Error recovery and iterative refinement
+- Multi-step agentic loops with reflection
 
 ### Production Code Quality
-- Code that shipped to production systems
+- Code that shipped to production systems (Hanzo, Lux, Zen, Zoo, Adnexus)
 - Security-audited smart contracts
 - Performance-optimized infrastructure
 
 ## Citation
 
 ```bibtex
-@dataset{zen_agentic_dataset,
+@dataset{zen_agentic_dataset_2026,
   author = {Kelling, Zach},
-  title = {Zen Agentic Dataset: 10.5B Tokens of Agentic AI Programming},
+  title = {Zen Agentic Dataset: ~12B Tokens of Agentic AI Programming},
+  version = {2026-05},
   year = {2026},
   publisher = {Zoo Labs Foundation},
   url = {https://huggingface.co/datasets/zenlm/zen-agentic-dataset}
@@ -145,4 +171,4 @@ Unlike synthetic datasets, this contains **actual Claude Code sessions** showing
 ---
 
 **Maintainer:** [z@hanzo.ai](mailto:z@hanzo.ai)  
-**License:** Commercial - Contact for terms
+**License:** Commercial — Contact for terms
