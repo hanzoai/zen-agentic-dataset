@@ -7,3 +7,6 @@ QWEN.md
 *.gguf
 *.pt
 *.pth
+
+# dataset stays local, never committed (24G)
+data/
