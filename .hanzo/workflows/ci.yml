@@ -1,0 +1,39 @@
+name: CI
+
+# This repo ships data, not code: the check is that the files a consumer reads
+# are present and that no symlink dangles. It already named the right runner
+# label, but it sat in .github/workflows, which git.hanzo.ai only reads when
+# .hanzo/workflows is absent — so it ran on GitHub and nowhere else.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: hanzo-build-linux-amd64
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate repository
+        run: |
+          set -euo pipefail
+          fail=0
+          for f in README.md LICENSE DATASET_CARD.md; do
+            if [ -f "$f" ]; then
+              echo "present: $f"
+            else
+              echo "::error::missing $f"; fail=1
+            fi
+          done
+
+          broken=$(find . -xtype l 2>/dev/null | head -5)
+          if [ -n "$broken" ]; then
+            echo "::error::broken symlinks:"
+            echo "$broken"
+            fail=1
+          fi
+          exit "$fail"
